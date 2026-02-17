@@ -149,11 +149,6 @@ export const Onboarding: React.FC<OnboardingProps> = ({ selectTheme }) => {
                 </div>
             </div>
 
-            {/* Corner Decorative Elements */}
-            <div className="absolute top-8 left-8 p-1 rounded-full border border-white/5 glass-deep opacity-40">
-                <div className="px-4 py-1.5 rounded-full text-[9px] font-black tracking-[0.3em] text-white uppercase">2026 Edition</div>
-            </div>
-
             <style jsx global>{`
                 .glass-deep {
                     background: rgba(255, 255, 255, 0.03);
