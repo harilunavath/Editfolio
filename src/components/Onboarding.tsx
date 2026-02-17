@@ -140,7 +140,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ selectTheme }) => {
 
                                 <div className="pt-4 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
                                     <button className="px-8 py-3 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-[10px] font-black tracking-widest uppercase hover:bg-orange-500 hover:text-white transition-all">
-                                        Enter Kingdom
+                                        House of the Dragon
                                     </button>
                                 </div>
                             </div>
