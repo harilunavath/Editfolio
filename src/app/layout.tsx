@@ -1,5 +1,17 @@
 import type { Metadata } from "next";
+import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
+
+const outfit = Outfit({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "700", "900"],
+    variable: "--font-outfit"
+});
+
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter"
+});
 
 export const metadata: Metadata = {
     title: "Hari Edits | Video Editor Portfolio",
@@ -15,8 +27,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body>
+        <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+            <body className="antialiased font-outfit">
                 {children}
             </body>
         </html>
