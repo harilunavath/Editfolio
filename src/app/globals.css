@@ -52,6 +52,22 @@ h6 {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
 @layer utilities {
     .text-balance {
         text-wrap: balance;
