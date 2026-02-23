@@ -89,7 +89,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ selectTheme }) => {
                                     className="relative w-32 h-32 flex items-center justify-center"
                                 >
                                     <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                    <img src="/GOT.png" alt="House Stark" className="w-full h-full object-contain relative z-10 brightness-110 contrast-125 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
+                                    <img src="/Editfolio/GOT.png" alt="House Stark" className="w-full h-full object-contain relative z-10 brightness-110 contrast-125 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]" />
                                 </motion.div>
 
                                 <div className="text-center space-y-2">
@@ -127,7 +127,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ selectTheme }) => {
                                     className="relative w-32 h-32 flex items-center justify-center"
                                 >
                                     <div className="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                                    <img src="/targaryen.png" alt="House Targaryen" className="w-full h-full object-contain relative z-10 brightness-110 contrast-125 drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
+                                    <img src="/Editfolio/targaryen.png" alt="House Targaryen" className="w-full h-full object-contain relative z-10 brightness-110 contrast-125 drop-shadow-[0_0_15px_rgba(249,115,22,0.3)]" />
                                 </motion.div>
 
                                 <div className="text-center space-y-2">

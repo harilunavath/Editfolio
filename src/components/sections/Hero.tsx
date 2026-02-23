@@ -51,7 +51,7 @@ export const Hero: React.FC<HeroProps> = ({
                         className="absolute inset-0 z-0 pointer-events-none"
                     >
                         <img
-                            src="/bg.png"
+                            src="/Editfolio/bg.png"
                             alt="Iron Throne"
                             className="w-full h-full object-cover object-[center_35%] md:object-center transition-all duration-1000 grayscale contrast-125 brightness-[0.6]"
                         />

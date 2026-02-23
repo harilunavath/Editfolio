@@ -34,7 +34,7 @@ export const About = React.forwardRef<HTMLDivElement, AboutProps>(({ isScrolling
                         className="relative rounded-[3rem] overflow-hidden liquid-glass aspect-[3/4] group"
                     >
                         <img
-                            src="/Subject1.jpg"
+                            src="/Editfolio/Subject1.jpg"
                             alt="Hari"
                             className={`w-full h-full object-contain transition-all duration-[800ms] ease-out group-hover:scale-105 ${isScrollingGlobal ? 'grayscale brightness-50 contrast-125' : 'brightness-105'}`}
                         />

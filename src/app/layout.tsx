@@ -15,10 +15,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "Hari  | Video Editor Portfolio",
+    title: "Hari | Video Editor Portfolio",
     description: "Professional video editing portfolio of Hari. Crafting visual narratives and cinematic experiences.",
     icons: {
-        icon: "/GOT.png",
+        icon: "/Editfolio/GOT.png",
     },
 };
 
