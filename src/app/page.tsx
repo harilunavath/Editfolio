@@ -15,6 +15,8 @@ import { LongForm } from "@/components/sections/LongForm";
 import { ShortForm } from "@/components/sections/ShortForm";
 import { WhatIOffer } from "@/components/sections/WhatIOffer";
 import { Contact } from "@/components/sections/Contact";
+import { VideoModal } from "@/components/VideoModal";
+import { Reel, Video } from "@/lib/videos";
 
 export default function Home() {
     const [theme, setTheme] = useState<"winter" | "fire">("winter");
@@ -34,6 +36,10 @@ export default function Home() {
     const [isScrollingReels, setIsScrollingReels] = useState(false);
     const [isScrollingVideos, setIsScrollingVideos] = useState(false);
     const [isScrollingGlobal, setIsScrollingGlobal] = useState(false);
+
+    // Global Modal State
+    const [selectedVideo, setSelectedVideo] = useState<Video | Reel | null>(null);
+    const [isModalReel, setIsModalReel] = useState(false);
 
     const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -85,8 +91,6 @@ export default function Home() {
     const heroHariY = useTransform(scrollY, [0, 400], [0, -300]);
     const heroHariScale = useTransform(scrollY, [0, 400], [1, 0.5]);
 
-    const navCentralHariOpacity = useTransform(scrollY, [350, 500], [0, 1]);
-    const navCentralHariY = useTransform(scrollY, [350, 500], [20, 0]);
 
     const navBg = useTransform(scrollY, [0, 300], ["rgba(0, 0, 0, 0.5)", "rgba(255, 255, 255, 0.01)"]);
     const navBorder = useTransform(scrollY, [0, 300], ["rgba(255, 255, 255, 0.15)", "rgba(255, 255, 255, 0.04)"]);
@@ -122,7 +126,7 @@ export default function Home() {
                         }}
                     />
 
-                    <div className="z-[12] fixed inset-0 pointer-events-none">
+                    <div className="z-1 fixed inset-0 pointer-events-none">
                         {isPremium && (theme === "winter" ? <WinterBackground /> : <FireBackground />)}
                     </div>
 
@@ -137,12 +141,6 @@ export default function Home() {
                                 </span>
                             </div>
 
-                            <motion.div
-                                style={{ opacity: navCentralHariOpacity, y: navCentralHariY }}
-                                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                            >
-                                <span className="text-white font-bold tracking-[0.4em] text-xs uppercase italic mr-[-0.4em]">HARI</span>
-                            </motion.div>
 
                             <div className="flex items-center gap-2 md:gap-3">
                                 <button
@@ -214,6 +212,10 @@ export default function Home() {
                             isScrollingVideos={isScrollingVideos}
                             isPremium={isPremium}
                             theme={theme}
+                            onSelectVideo={(v) => {
+                                setSelectedVideo(v);
+                                setIsModalReel(false);
+                            }}
                         />
 
                         <ShortForm
@@ -223,6 +225,10 @@ export default function Home() {
                             isScrollingReels={isScrollingReels}
                             isPremium={isPremium}
                             theme={theme}
+                            onSelectVideo={(r) => {
+                                setSelectedVideo(r);
+                                setIsModalReel(true);
+                            }}
                         />
 
                         <WhatIDo ref={whatIDoRef} />
@@ -238,6 +244,19 @@ export default function Home() {
 
                         <Contact ref={contactRef} theme={theme} />
                     </div>
+
+                    <AnimatePresence>
+                        {selectedVideo && (
+                            <VideoModal
+                                isOpen={!!selectedVideo}
+                                onClose={() => setSelectedVideo(null)}
+                                videoTitle={selectedVideo?.title || ""}
+                                videoLink={selectedVideo.link}
+                                videoPath={selectedVideo.path}
+                                isReel={isModalReel}
+                            />
+                        )}
+                    </AnimatePresence>
 
                     <style jsx global>{`
                         body { background: #000; overflow-x: hidden; font-family: var(--font-outfit), sans-serif; }

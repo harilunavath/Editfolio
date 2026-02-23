@@ -71,20 +71,6 @@ export const About = React.forwardRef<HTMLDivElement, AboutProps>(({ isScrolling
                             </p>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-6 pt-4">
-                            {[
-                                { v: 50, s: "+", label: "Projects" },
-                                { v: 3, s: "+", label: "Years" },
-                                { v: 24, s: "/7", label: "Passion" },
-                            ].map(({ v, s, label }) => (
-                                <div key={label} className="flex flex-col gap-1">
-                                    <span className="text-3xl font-bold tracking-tighter text-white italic">
-                                        <AnimatedCounter value={v} suffix={s} />
-                                    </span>
-                                    <span className="text-[10px] font-bold tracking-[0.4em] text-white/30 uppercase">{label}</span>
-                                </div>
-                            ))}
-                        </div>
 
                         <button
                             onClick={() => scrollToSection(contactRef)}

@@ -1,0 +1,45 @@
+{
+    "reels": [
+        {
+            "id": 101,
+            "title": "What is love",
+            "path": "/videos/Short101.mp4",
+            "thumbnail": "https://images.unsplash.com/photo-1518199266791-c3755b21ef39?auto=format&fit=crop&q=80&w=600"
+        },
+        {
+            "id": 102,
+            "title": "Typography 101",
+            "path": "/videos/Short102.mp4",
+            "thumbnail": "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600"
+        },
+        {
+            "id": 103,
+            "title": "MJ",
+            "path": "/videos/Short103.mp4",
+            "thumbnail": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600"
+        }
+    ],
+    "videos": [
+        {
+            "id": 1,
+            "title": "My First Assignment | Not Just A Video Editing Cohort | C12",
+            "category": "Course Assignment",
+            "link": "https://youtu.be/47S2c0Njqa4",
+            "thumbnail": "https://img.youtube.com/vi/47S2c0Njqa4/maxresdefault.jpg"
+        },
+        {
+            "id": 2,
+            "title": "Assignment 4 | Sound Design | Not Just a Video Editing Cohort | C12 | Tharun speaks",
+            "category": "Sound Design",
+            "link": "https://youtu.be/lP0_CnTBYzM",
+            "thumbnail": "https://img.youtube.com/vi/lP0_CnTBYzM/maxresdefault.jpg"
+        },
+        {
+            "id": 3,
+            "title": "Assignment 3 | Documentary Style Edit | Not Just a Video Editing Course | C12 | Tharun Speaks",
+            "category": "Documentary Edit",
+            "link": "https://youtu.be/-Jg7kkxae7E",
+            "thumbnail": "https://img.youtube.com/vi/-Jg7kkxae7E/maxresdefault.jpg"
+        }
+    ]
+}

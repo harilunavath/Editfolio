@@ -19,7 +19,7 @@ interface WinterBackgroundProps {
 export const WinterBackground: React.FC<WinterBackgroundProps> = ({ active = true }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const flakesRef = useRef<Flake[]>([]);
-    const animationFrameRef = useRef<number>();
+    const animationFrameRef = useRef<number | undefined>(undefined);
 
     useEffect(() => {
         const canvas = canvasRef.current;

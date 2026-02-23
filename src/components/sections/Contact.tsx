@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Instagram, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Instagram, MessageCircle, Linkedin } from "lucide-react";
 
 interface ContactProps {
     theme: "winter" | "fire";
@@ -46,6 +46,11 @@ export const Contact = React.forwardRef<HTMLDivElement, ContactProps>(({ theme }
                     <a href="https://wa.me/917989383506" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 group">
                         <MessageCircle className={`w-8 h-8 text-white/20 group-hover:text-white transition-all duration-500 group-hover:scale-110 ${theme === 'fire' ? 'group-hover:text-orange-500' : ''}`} />
                         <span className="text-[10px] font-bold tracking-widest text-white/20 uppercase group-hover:text-white transition-colors">WhatsApp</span>
+                        <div className="h-px w-0 bg-white group-hover:w-full transition-all duration-500" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/hari-lunavath-a20ab8229/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 group">
+                        <Linkedin className={`w-8 h-8 text-white/20 group-hover:text-white transition-all duration-500 group-hover:scale-110 ${theme === 'fire' ? 'group-hover:text-orange-500' : ''}`} />
+                        <span className="text-[10px] font-bold tracking-widest text-white/20 uppercase group-hover:text-white transition-colors">LinkedIn</span>
                         <div className="h-px w-0 bg-white group-hover:w-full transition-all duration-500" />
                     </a>
                 </div>

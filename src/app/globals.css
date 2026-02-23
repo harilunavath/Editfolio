@@ -73,3 +73,145 @@ h6 {
         text-wrap: balance;
     }
 }
+
+/* ─────────────────────────────────────────────────
+   Hero Typography Background
+   GPU-composited via transform only — zero repaints
+───────────────────────────────────────────────── */
+@keyframes hero-typo-rise {
+    0% {
+        transform: translateY(110vh) rotate(-6deg);
+    }
+
+    100% {
+        transform: translateY(-20vh) rotate(-6deg);
+    }
+}
+
+@keyframes hero-typo-pulse {
+
+    0%,
+    100% {
+        opacity: var(--tw-opacity, 0.025);
+    }
+
+    50% {
+        opacity: calc(var(--tw-opacity, 0.025) * 1.8);
+    }
+}
+
+.hero-typo-bg {
+    /* Isolate stacking context so z-[-1] works correctly */
+    isolation: isolate;
+}
+
+.hero-typo-word {
+    position: absolute;
+    bottom: -10vh;
+    white-space: nowrap;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    color: #c8d8ff;
+    line-height: 1;
+    /* GPU-only properties  */
+    will-change: transform;
+    animation-name: hero-typo-rise;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+/* Honour OS-level reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .hero-typo-word {
+        animation: none;
+        transform: translateY(-40vh) rotate(-6deg);
+    }
+}
+
+/* Hide desktop-only words on small screens */
+@media (max-width: 767px) {
+    .hero-typo-word--desktop-only {
+        display: none;
+    }
+}
+
+/* ── Premium "Hi, I am" badge ──────────────────────
+   Shimmer gradient text, glowing pulse dot,
+   animated underline draw-in — all GPU composited.
+────────────────────────────────────────────────── */
+.hero-hi-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg,
+            rgba(255, 255, 255, 0.9) 0%,
+            rgba(255, 255, 255, 0.35) 40%,
+            rgba(200, 216, 255, 0.9) 60%,
+            rgba(255, 255, 255, 0.5) 100%);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hi-shimmer 4s linear infinite;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.hero-hi-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(200, 216, 255, 0.7), transparent);
+    animation: hi-underline 1.2s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-hi-dot {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c8d8ff;
+    box-shadow: 0 0 8px 2px rgba(200, 216, 255, 0.8);
+    animation: hi-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hi-shimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 220% center;
+    }
+}
+
+@keyframes hi-underline {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes hi-dot-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 8px 2px rgba(200, 216, 255, 0.8);
+    }
+
+    50% {
+        opacity: 0.5;
+        box-shadow: 0 0 14px 4px rgba(200, 216, 255, 0.3);
+    }
+}

@@ -77,95 +77,109 @@ export const Hero: React.FC<HeroProps> = ({
                     style={{ scale: subjectScale, opacity: subjectOpacity, y: subjectY }}
                     className="relative z-10 w-full h-full flex flex-col"
                 >
-                    {/* Subject.jpg in Hero - Absolute Bottom Center */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
-                        className="absolute bottom-[-10%] right-[-15%] md:left-1/2 md:-translate-x-1/2 w-[140%] md:w-full max-w-xl z-[-1] pointer-events-none md:translate-y-0"
+                    {/* Typography Background — CSS-only, GPU composited, hero-scoped */}
+                    <div
+                        aria-hidden="true"
+                        className="absolute inset-0 z-[-1] overflow-hidden pointer-events-none hero-typo-bg"
                     >
-                        <img
-                            src="/Subject.jpg"
-                            alt="Subject"
-                            className="w-full h-full object-contain grayscale md:brightness-75 transition-all duration-700 opacity-30 md:opacity-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
-                    </motion.div>
-
-
-                    {/* Main Content Area — Repositioned for Mobile */}
-                    <div className="flex-1 flex flex-col justify-start md:justify-end w-full max-w-[1400px] mx-auto px-6 md:px-20 pt-32 md:pb-32 relative z-10">
-
-                        {/* Name and Tagline Stack */}
-                        <div className="flex flex-col items-start gap-4">
-                            <motion.p
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1, duration: 0.7 }}
-                                className="text-[12px] font-black tracking-[0.4em] text-white/80 uppercase shadow-sm"
+                        {([
+                            { word: "CINEMATIC", col: "60%", delay: "-8s", dur: "22s", size: "clamp(2.5rem,10vw,12rem)", opacity: 0.20, mobile: true },
+                            { word: "EDITORIAL", col: "72%", delay: "-14s", dur: "28s", size: "clamp(2rem,8vw,9rem)", opacity: 0.18, mobile: false },
+                            { word: "HARI", col: "85%", delay: "-5s", dur: "18s", size: "clamp(3.5rem,14vw,18rem)", opacity: 0.15, mobile: false },
+                            { word: "MOTION", col: "65%", delay: "-18s", dur: "25s", size: "clamp(2rem,9vw,10rem)", opacity: 0.19, mobile: true },
+                            { word: "4K", col: "92%", delay: "-10s", dur: "20s", size: "clamp(3rem,12vw,14rem)", opacity: 0.22, mobile: true },
+                            { word: "COLOR", col: "78%", delay: "-22s", dur: "30s", size: "clamp(2rem,7vw,8rem)", opacity: 0.16, mobile: false },
+                            { word: "CUT", col: "88%", delay: "-4s", dur: "16s", size: "clamp(3rem,13vw,16rem)", opacity: 0.20, mobile: true },
+                            { word: "GRADE", col: "75%", delay: "-20s", dur: "24s", size: "clamp(2rem,8vw,9rem)", opacity: 0.17, mobile: false },
+                            { word: "STORY", col: "95%", delay: "-9s", dur: "26s", size: "clamp(2.5rem,10vw,11rem)", opacity: 0.19, mobile: true },
+                            { word: "LUNAVATH", col: "68%", delay: "-28s", dur: "32s", size: "clamp(1.8rem,6vw,7rem)", opacity: 0.15, mobile: false },
+                        ] as const).map(({ word, col, delay, dur, size, opacity, mobile }) => (
+                            <span
+                                key={word}
+                                className={`hero-typo-word${mobile ? '' : ' hero-typo-word--desktop-only'}`}
+                                style={{
+                                    left: col,
+                                    animationDelay: delay,
+                                    animationDuration: dur,
+                                    fontSize: size,
+                                    opacity,
+                                } as React.CSSProperties}
                             >
-                                Hi, I am Hari Lunavath
-                            </motion.p>
+                                {word}
+                            </span>
+                        ))}
+                        {/* Radial vignette — stronger on mobile sides to mask overflow */}
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,transparent_30%,#05050590_100%)] md:bg-[radial-gradient(ellipse_80%_70%_at_50%_50%,transparent_40%,#05050580_100%)]" />
+                    </div>
 
-                            <motion.h1
-                                style={{ y: heroHariY, scale: heroHariScale }}
-                                initial={{ opacity: 0, x: -30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                className="text-[clamp(3rem,12vw,6rem)] md:text-[clamp(4rem,12vw,10rem)] font-black tracking-[-0.05em] leading-[0.82] uppercase italic hero-glow-text text-white"
-                            >
-                                HARI
-                            </motion.h1>
 
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                                className="flex flex-col gap-6 max-w-xl"
-                            >
-                                <div className="space-y-4">
-                                    <h3 className="text-white text-xl md:text-2xl font-bold tracking-tight leading-tight [text-shadow:0_2px_10px_rgba(0,0,0,0.5)]">
-                                        Techie Turned Video Editor & Visual Storyteller
-                                    </h3>
-                                    <p className="text-white/90 text-sm md:text-base leading-relaxed font-light tracking-wide max-w-lg [text-shadow:0_1px_5px_rgba(0,0,0,0.3)]">
-                                        I create cinematic visuals and engaging narratives through professional video editing, motion graphics, and color grading—delivering high-quality content that captures attention and connects with audiences.
-                                    </p>
-                                </div>
+                    {/* Main Content Area — Split Layout */}
+                    <div className="flex-1 flex w-full max-w-[1400px] mx-auto px-6 md:px-20 pt-32 md:pb-32 relative z-10">
+                        <div className="grid md:grid-cols-2 w-full h-full items-center md:items-end">
+                            {/* Left Side: Name and Tagline */}
+                            <div className="flex flex-col items-start gap-4">
+                                <motion.p
+                                    initial={{ opacity: 0, y: 8 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1, duration: 0.7 }}
+                                    className="hero-hi-label"
+                                >
+                                    <span className="hero-hi-dot" />
+                                    Hi, I am Hari Lunavath
+                                </motion.p>
 
-                                {/* Stats row */}
-                                <div className="flex gap-6">
-                                    {[
-                                        { v: 50, s: "+", l: "Projects" },
-                                        { v: 3, s: "+", l: "Years" },
-                                        { v: 4, s: "K", l: "Quality" }
-                                    ].map(({ v, s, l }) => (
-                                        <div key={l} className="flex flex-col gap-1">
-                                            <span className="text-2xl font-black text-white italic tracking-tighter">
-                                                <AnimatedCounter value={v} suffix={s} />
-                                            </span>
-                                            <span className="text-[8px] font-bold tracking-[0.35em] text-white/40 uppercase">{l}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                                    className="flex flex-col gap-6 max-w-xl"
+                                >
+                                    <div className="space-y-4">
+                                        <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] italic uppercase">
+                                            Techie Turned Video Editor <br />
+                                            <span className="text-white/40">& Visual Storyteller</span>
+                                        </h3>
+                                        <p className="text-white/70 text-sm md:text-base leading-relaxed font-light tracking-wide max-w-lg [text-shadow:0_1px_5px_rgba(0,0,0,0.3)]">
+                                            I create cinematic visuals and engaging narratives through professional video editing, motion graphics, and color grading.
+                                        </p>
+                                    </div>
 
-                                {/* CTA buttons */}
-                                <div className="hidden md:flex items-center gap-4 pt-4">
-                                    <button
-                                        onClick={() => scrollToSection(reelsRef)}
-                                        className="group flex items-center gap-3 px-8 py-4 bg-white text-black font-black rounded-full text-[11px] tracking-[0.2em] uppercase hover:bg-white/90 transition-all duration-300 hover:scale-[1.05] cursor-pointer"
-                                    >
-                                        <Smartphone className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                                        Watch Reels
-                                    </button>
-                                    <button
-                                        onClick={() => scrollToSection(videosRef)}
-                                        className="group flex items-center gap-3 px-8 py-4 border border-white/20 text-white/80 font-black rounded-full text-[11px] tracking-[0.2em] uppercase hover:border-white/40 hover:text-white transition-all duration-300 cursor-pointer backdrop-blur-sm"
-                                    >
-                                        <Film className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                                        Portfolio
-                                    </button>
-                                </div>
-                            </motion.div>
+                                    {/* CTA buttons */}
+                                    <div className="hidden md:flex items-center gap-4 pt-4">
+                                        <button
+                                            onClick={() => scrollToSection(reelsRef)}
+                                            className="group flex items-center gap-3 px-8 py-4 bg-white text-black font-black rounded-full text-[11px] tracking-[0.2em] uppercase hover:bg-white/90 transition-all duration-300 hover:scale-[1.05] cursor-pointer"
+                                        >
+                                            <Smartphone className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                                            Watch Reels
+                                        </button>
+                                        <button
+                                            onClick={() => scrollToSection(videosRef)}
+                                            className="group flex items-center gap-3 px-8 py-4 border border-white/20 text-white/80 font-black rounded-full text-[11px] tracking-[0.2em] uppercase hover:border-white/40 hover:text-white transition-all duration-300 cursor-pointer backdrop-blur-sm"
+                                        >
+                                            <Film className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                                            Portfolio
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            </div>
+
+                            {/* Right Side: Identity Typography */}
+                            <div className="hidden md:flex flex-col items-end justify-center h-full relative">
+                                <motion.div
+                                    initial={{ opacity: 0, x: 50 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.6, duration: 1.2 }}
+                                    className="flex flex-col items-end"
+                                >
+                                    <span className="text-[18rem] md:text-[22rem] font-black text-white/[0.03] tracking-tighter leading-none italic select-none">
+                                        HARI
+                                    </span>
+                                    <span className="text-[10rem] md:text-[12rem] font-black text-white/[0.015] tracking-tighter leading-none italic -mt-20 mr-12 select-none uppercase">
+                                        Lunavath
+                                    </span>
+                                </motion.div>
+                            </div>
                         </div>
                     </div>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
+import { MobileBanner } from "@/components/MobileBanner";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
         <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
             <body className="antialiased font-outfit">
                 {children}
+                <MobileBanner />
             </body>
         </html>
     );
